@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -116,8 +117,12 @@ public class CameraDemoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_camera_demo);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 //        lastVideoPathFileName = FileUtil.getPathInPackage(CameraDemoActivity.this, true) + "/lastVideoPath.txt";
         Button takePicBtn = (Button) findViewById(R.id.takePicBtn);
         Button takeShotBtn = (Button) findViewById(R.id.takeShotBtn);
